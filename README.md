@@ -1,5 +1,10 @@
 # disney-clone
 
+## Overview
+```
+Disney plus clone created using Vue 3 (Composition API) powered by firebase.
+```
+
 ## Project setup
 ```
 npm install
