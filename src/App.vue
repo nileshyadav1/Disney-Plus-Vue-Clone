@@ -1,30 +1,60 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view/>
+  <Header/>
+ 
+ <router-view></router-view>
+
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script>
+import Header from '@/components/Header.vue'
+export default {
+  
+  components:{
+    Header
+  }
+};
+</script>
+
+<style lang="scss">
+html{
+    scroll-behavior: smooth;
 }
 
-#nav {
-  padding: 30px;
+*{
+    box-sizing: border-box;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+body{
+    font-family:$primary-font;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  margin:0;
+  padding: 0;
+  background-color: $bg-color;
+  color:$text-primary;
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+
+
+a{
+  color:$text-primary;
+  text-decoration: none;
 }
+
+@media only screen and (min-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+}
+@media only screen and (min-width: 480px) and (max-width: 768px) {
+  body {
+    font-size: 15px;
+  }
+}
+@media only screen and (max-width: 479px) {
+  body {
+      font-size: 14px;
+  }
+}
+
 </style>

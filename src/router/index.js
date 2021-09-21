@@ -1,25 +1,54 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
+import { useStore } from "vuex";
+import Login from '../views/Login.vue'
 import Home from '../views/Home.vue'
+import Detail from '../views/Detail.vue'
+import { computed } from '@vue/reactivity';
+const store = useStore();
+const User= computed(() => store.state.user );
+
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    name: 'Login',
+    component: Login
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
+    path: '/home',
+    name: 'Home',
+    component: Home,
+   
+    meta: { requiresLogin: true },
+  },
+  {
+    path: '/detail/:id',
+    name: 'Detail',
+    component: Detail,
+    meta: { requiresLogin: true },
+  },
+  
 ]
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes
 })
+
+
+
+
+
+router.beforeEach((to, from, next) => {
+  if (
+    to.matched.some((record) => record.meta.requiresLogin) && User === null
+   
+  ) {
+   
+    next({  name: 'Login',});
+  } else {
+    next();
+  }
+});
 
 export default router
