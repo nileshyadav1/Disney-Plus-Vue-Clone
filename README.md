@@ -12,9 +12,8 @@ Concepts used in the project:
 * Using Vuex v.4 for state management (Session tokens for login/logout facility and Storing movie meta data).
 * Vue Router for routing between component pages.
 
-## Sources
-This app is inspired by Rando Kim book „Time of Your Life”
-and Android app tutorial by [@eericon](https://www.google.com)
+## Live Demo
+The app is deployed using firebase hosting. [visit site](https://disneyplus-vue-clone.web.app/)
 
 
 
